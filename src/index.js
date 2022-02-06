@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from "./App";
 import { createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 //default state
 var defaultState = 0;
@@ -21,7 +22,7 @@ const balanceReducer = (state = defaultState, action) => {
 };
 
 //store
-var store = createStore(balanceReducer);
+var store = createStore(balanceReducer, composeWithDevTools());
 console.log(store.getState());
 
 //dispatch
