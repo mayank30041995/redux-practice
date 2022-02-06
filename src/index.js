@@ -23,20 +23,18 @@ const balanceReducer = (state = defaultState, action) => {
 
 //store
 var store = createStore(balanceReducer, composeWithDevTools());
-console.log(store.getState());
+store.subscribe( () => {
+  console.log(store.getState()); //get updated state
+});
 
 //dispatch
 store.dispatch({ type: "abc"}); //dispatch: pass an action to store; it invokes the reducer automatically
-console.log(store.getState()); //get updated state
 
 store.dispatch({ type: "DEPOSIT"});
-console.log(store.getState()); //100
 
 store.dispatch({ type: "DEPOSIT"});
-console.log(store.getState()); //200
 
 store.dispatch({ type: "WITHDRAW"});
-console.log(store.getState()); //100
 
 
 ReactDOM.render(<App />, document.getElementById("root"));
